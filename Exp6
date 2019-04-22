@@ -1,0 +1,8 @@
+clc
+clear all
+close all
+c=3*10^8;
+fo=input('Input frequency');
+er=input('Input epsilon');
+s=2*c/(3*fo*(10^9)*sqrt(er));
+sprintf('s= %d ',s)
