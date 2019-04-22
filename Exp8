@@ -1,0 +1,142 @@
+clc
+clear all
+close all
+k=2*pi;
+d=0.5;
+%total pattern of broadside with ef=cos
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+ beta=0;
+ psi=(k*d*cos(theta))+beta;
+ af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ ef=abs(cos(theta));
+ tp=ef.*af;
+ figure(1)
+ subplot(2,4,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for Broadside Array with %i elements',N(i)))
+ subplot(2,4,4)
+ polar(theta,ef)
+ title('Element Factor cos')
+ subplot(2,4,i+4)
+ polar(theta,tp)
+ title(sprintf('Total Pattern for Broadside Array with %i 
+elements',N(i)))
+ 
+end
+%total pattern of broadside with ef=sin
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+ beta=0;
+ psi=(k*d*cos(theta))+beta;
+ af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ ef=abs(sin(theta));
+ tp=ef.*af;
+ figure(2)
+ subplot(2,4,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for Broadside Array with %i elements',N(i)))
+ subplot(2,4,4)
+ polar(theta,ef)
+ title('Element Factor sin')
+ subplot(2,4,i+4)
+ polar(theta,tp)
+ title(sprintf('Total Pattern for Broadside Array with %i 
+elements',N(i)))
+end
+%total pattern of endfire for O degree with ef=sin
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+ beta=-1*k*d;
+ psi=(k*d*cos(theta))+beta;
+af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ ef=abs(sin(theta));
+ tp=ef.*af;
+ figure(3)
+ subplot(2,4,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for Endfire Array with %i elements',N(i)))
+ subplot(2,4,4)
+ polar(theta,ef)
+ title('Element Factor sin')
+ subplot(2,4,i+4)
+ polar(theta,tp)
+ title(sprintf('Total Pattern for Endfire Array with %i elements',N(i)))
+end
+%total pattern of endfire for O degree with ef=cos
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+ beta=-1*k*d;
+ psi=(k*d*cos(theta))+beta;
+ af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ ef=abs(cos(theta));
+ tp=ef.*af;
+ figure(4)
+ subplot(2,4,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for Endfire Array with %i elements',N(i)))
+ subplot(2,4,4)
+ polar(theta,ef)
+ title('Element Factor cos')
+ subplot(2,4,i+4)
+ polar(theta,tp)
+ title(sprintf('Total Pattern for Endfire Array with %i elements',N(i)))
+end
+%total pattern of endfire for 18O degree with ef=cos
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+ beta=k*d;
+ psi=(k*d*cos(theta))+beta;
+ af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ ef=abs(cos(theta));
+ tp=ef.*af;
+ figure(5)
+ subplot(2,4,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for Endfire Array with %i elements',N(i)))
+ subplot(2,4,4)
+ polar(theta,ef)
+ title('Element Factor cos')
+ subplot(2,4,i+4)
+ polar(theta,tp)
+ title(sprintf('Total Pattern for Endfire Array with %i elements',N(i)))
+end
+%total pattern of endfire for 18O degree with ef=sin
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+beta=k*d;
+ psi=(k*d*cos(theta))+beta;
+ af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ ef=abs(sin(theta));s
+ tp=ef.*af;
+ figure(6)
+ subplot(2,4,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for Endfire Array with %i elements',N(i)))
+ subplot(2,4,4)
+ polar(theta,ef)
+ title('Element Factor sin')
+ subplot(2,4,i+4)
+ polar(theta,tp)
+ title(sprintf('Total Pattern for Endfire Array with %i elements',N(i)))
+end
+%phase scanning
+theta1=input('enter value of theta');
+N=[4 8 12];
+for i=1:3
+ theta=0:(pi/180):2*pi;
+ beta=-1*k*d*cos(theta1);
+ psi=(k*d*cos(theta))+beta;
+ af=(1/N(i))*(sin(N(i)*psi*0.5)./sin(psi*0.5));
+ figure(7)
+ subplot(1,3,i)
+ polar(theta,af)
+ title(sprintf('Polar Plot for %i degree Array with %i 
+elements',theta1,N(i)))
+end
