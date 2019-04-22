@@ -1,0 +1,48 @@
+clc
+clear all
+close all
+h=1.6;;
+erf=4.3;
+err=2.33;
+c=3*10^8;
+f=[0.5 0.8 1 1.2 1.5 1.8 2 3];
+le=ones(1,8);
+we=ones(1,8);
+%fr4
+for i=1:8
+ while (1)
+ w=c/(2*f(i)*(10^6)*((erf+1)/2)^0.5);
+ erfe1= ((erf+1)/2)+ ((erf-1)/2)*((1+(10*h)/w)^-0.5);
+ dl=h/sqrt(erfe1);
+ le1=c/(2*f(i)*(10^6)*sqrt(erfe1));
+ we1=1.2*le1;
+ erfe2= ((erf+1)/2)+ ((erf-1)/2)*((1+(10*h)/we1)^-0.5);
+ diff=(erfe2-erfe1)*100;
+ if (diff<1)
+ le(i)=le1;
+ we(i)=we1;
+ break;
+ else
+ erfe1=erfe2;
+ end
+ end
+end
+%rtduroid
+for i=1:8
+ while (1)
+ w=c/(2*f(i)*(10^6)*((err+1)/2)^0.5);
+ erre1= ((err+1)/2)+ ((err-1)/2)*((1+(10*h)/w)^-0.5);
+ dl=h/sqrt(erre1);
+ le2=c/(2*f(i)*(10^6)*sqrt(erre1));
+ we2=1.2*le2;
+ erre2= ((err+1)/2)+ ((err-1)/2)*((1+(10*h)/we2)^-0.5);
+ diff=(erre2-erre1)*100;
+ if (diff<1)
+ le1(i)=le2;
+ we1(i)=we2;
+ break;
+ else
+ erre1=erre2;
+ end
+ end
+end
