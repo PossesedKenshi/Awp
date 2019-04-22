@@ -1,0 +1,9 @@
+theta=	0:pi/180:2*pi;
+e=sin(theta);
+h=ones(size(theta));
+figure(1)
+polar(theta,abs(e))
+title('E field radiation pattern')
+figure(2)
+polar(theta,h)
+title('H field radiation pattern')
