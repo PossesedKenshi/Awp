@@ -1,0 +1,9 @@
+clc
+clear all
+close all
+f=input('Enter frequency')
+er=input('Enter er')
+h=0.16;
+k=8.794/(f*sqrt(er));
+r=k/(sqrt(1+((2*h)/(pi*er*k))*(log(((pi*k)/(2*h))+1.7726))));
+sprintf('r= %d ',r)
